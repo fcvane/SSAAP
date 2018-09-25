@@ -21,6 +21,7 @@ object DBManager extends App {
 
   /**
     * Kudu
+    *
     * @param sqlContext
     * @param tabName
     */
@@ -38,6 +39,7 @@ object DBManager extends App {
 
   /**
     * Hivw
+    *
     * @param hiveContext
     * @param tabName
     */
@@ -47,6 +49,7 @@ object DBManager extends App {
 
   /**
     * Oracle
+    *
     * @param sqlContext
     * @param jdbcUrl
     * @param userName
@@ -66,6 +69,7 @@ object DBManager extends App {
 
   /**
     * MySQL
+    *
     * @param sqlContext
     * @param jdbcUrl
     * @param userName
@@ -75,9 +79,9 @@ object DBManager extends App {
   def readMySQL(sqlContext: SQLContext, jdbcUrl: String, userName: String, passWord: String, tabName: String): Unit = {
     val mysqlDF = Map(
       "url" -> jdbcUrl,
-      "dbtable" -> tabName,
       "user" -> userName,
       "password" -> passWord,
+      "dbtable" -> tabName,
       "driver" -> "com.mysql.jdbc.Driver")
     val df = sqlContext.read.options(mysqlDF).format("jdbc").load
     df.createOrReplaceTempView(tabName)
