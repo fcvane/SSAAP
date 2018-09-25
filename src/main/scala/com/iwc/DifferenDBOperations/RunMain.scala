@@ -65,7 +65,7 @@ object RunMain extends App {
   sqlFile.close()
   val sqlArray = str.split(";")
 
-  for (i <- 0 until sqlArray.length - 1) {
+  for (i <- 0 until sqlArray.length ) {
     val sql = sqlArray(i)
     if (!sql.startsWith("#")) {
       println(s"[ RunMain ] start execute ...")
@@ -78,6 +78,5 @@ object RunMain extends App {
       println(s"[ RunMain ] execute finish !")
     }
   }
-
-
+  sc.stop()
 }
